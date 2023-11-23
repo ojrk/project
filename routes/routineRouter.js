@@ -39,7 +39,7 @@ router.post("/api/save-routine", async (req, res) => {
   try {
     const { routine } = req.body;
 
-    const userId = req.session.userId;
+    const userId = req.body.userId;
 
     const updatedRoutine = {
       Monday: routine.Monday.map((exercise) => ({
@@ -87,7 +87,7 @@ router.post("/api/save-routine", async (req, res) => {
 
 router.get("/api/get-routine", async (req, res) => {
   try {
-    const userId = req.session.userId;
+    const userId = req.body.userId;
 
     const userRoutine = await Routine.findOne({ userId });
 
